@@ -22,6 +22,8 @@
 			
 		<% end %>
 
+		<% if policy(Todoo.new).create? %>
 		<p><%= link_to "Add an item to the list", new_todoo_path %></p>
+		<% end %>
 	</div>
 </div>

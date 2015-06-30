@@ -4,15 +4,19 @@ class TodooController < ApplicationController
 	def index
 		@todos  = Todoo.where(done: false)
 		@todone = Todoo.where(done: true)
+		authorize @todo
+		authorize @todone
 	end
 
 	def new	
 		@todo = Todoo.new
+		authorize @todo
 
 	end
 
 	def create
 		@todo = Todoo.new(todo_params)
+		authorize @todo
 		if @todo.save
 			redirect_to todoo_index_path, :notice => "Your todo item was created!"
 		else
@@ -22,7 +26,8 @@ class TodooController < ApplicationController
 
 	def update
 		@todo = Todoo.find(params[:id])
-
+		authorize @todo
+		
 		if @todo.update_attribute(:done, true)
 			redirect_to todoo_index_path, :notice => "Your todoo item has been marked as done"
 		else
