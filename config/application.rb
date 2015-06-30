@@ -22,5 +22,21 @@ module Todo
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+
+
+    #-----------------------------This is the Email the app will use to send out email for confimation---------------------------------#
+
+    ActionMailer::Base.smtp_settings = {
+
+        :address             => 'smtp.gmail.com',
+        :domain              => 'mail.google.com',
+        :port                => 587,
+        :user_name           => "am120284@gmail.com", #ENV['GMAIL_USERNAME'],
+        :password            => '412619921124', #ENV["GMAIL_PASSWORD"],
+        :authentication      => 'login',
+        :enable_starttls_auto => true
+    }
+    #-----------------------------------------------------------------------------------------------------------------------------------#
   end
 end

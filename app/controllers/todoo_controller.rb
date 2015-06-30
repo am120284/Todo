@@ -1,5 +1,5 @@
 class TodooController < ApplicationController
-
+	#beore_action :authenticate_user!
 
 	def index
 		@todos  = Todoo.where(done: false)
@@ -16,7 +16,7 @@ class TodooController < ApplicationController
 		if @todo.save
 			redirect_to todoo_index_path, :notice => "Your todo item was created!"
 		else
-			render "new" #When a new Item is created the page wont reload thanks to AJAX 88888888888888
+			render "new" #When a new Item is created the page wont reload thanks to AJAX
 		end
 	end
 

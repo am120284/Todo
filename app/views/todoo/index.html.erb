@@ -1,23 +1,27 @@
-<h1>Todoo items</h1>
+<div class="center2">
+<p id="notice"><%= notice %></p>
+<h1>Todo items</h1>
 
-<div class="list">
-<h2>ToDo</h2>
-<% @todos.each do |t| %>
-	  	<li><%= t.name%> <%= link_to "Completed", todoo_path(t), :method => :put %></li>
-	  
-	  
-	<% end%>
-</div>
 
-<div class="list">
-	<h2>DONE</h2>
+	<div class="list">
+	<h2>ToDo</h2>
+	<% @todos.each do |t| %>
+		  	<li><%= t.name%> <%= link_to "Completed", todoo_path(t), :method => :put %></li>
+		  
+		  
+		<% end%>
+	</div>
 
-	<% @todone.each do |t| %>
-		
-			<li><%= t.name %><%= link_to " Remove", t,method: :delete %> </li>
+	<div class="list">
+		<h2>DONE</h2>
+
+		<% @todone.each do |t| %>
 			
-		
-	<% end %>
+				<li><%= t.name %><%= link_to " Remove", t,method: :delete %> </li>
+				
+			
+		<% end %>
 
-	<p><%= link_to "Add an item to the list", new_todoo_path %></p>
+		<p><%= link_to "Add an item to the list", new_todoo_path %></p>
+	</div>
 </div>

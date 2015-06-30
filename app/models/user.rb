@@ -5,4 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
          has_many :todoos
+
+         def confirm!
+         	welcome_email
+         	super
+         end
+
+         private
+
+         def welcome_email
+
+         	if UserMailer.welcome_message(self).deliver
+         		puts "Email sent"
+         	end
+         end
 end
