@@ -3,27 +3,40 @@
 <h1>Todo items</h1>
 
 
-	<div class="list">
+
+<div >
 	<h2>ToDo</h2>
+
 	<% @todos.each do |t| %>
-		  	<li><%= t.name%> <%= link_to "Completed", todoo_path(t), :method => :put %></li>
-		  
-		  
-		<% end%>
+
+		<li><%= check_box_tag  "completed[]", t.id %>
+		 <% if t.completed == true %>
+
+		    
+		    <strike><%= t.name%></strike></li>
+
+		 <% else %>
+
+		   <%= t.name%></li>
+
+		  <% end %>
+
+	<% end%>
+		<%= submit_tag("Complete Todos", :class=>"btn btn-success") %>
 	</div>
 
-	<div class="list">
+	<div >
 		<h2>DONE</h2>
 
 		<% @todone.each do |t| %>
 			
 				<li><%= t.name %><%= link_to " Remove", t,method: :delete %> </li>
-				
-			
 		<% end %>
 
 		<% if policy(Todoo.new).create? %>
-		<p><%= link_to "Add an item to the list", new_todoo_path %></p>
+
+			<p><%= link_to "Add an item to the list", new_todoo_path %></p>
+
 		<% end %>
 	</div>
 </div>
