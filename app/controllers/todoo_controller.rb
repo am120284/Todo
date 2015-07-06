@@ -10,8 +10,6 @@ class TodooController < ApplicationController
 
 	def new	
 		@todo = Todoo.new
-	
-
 	end
 
 	def create
@@ -22,6 +20,14 @@ class TodooController < ApplicationController
 		else
 			render "new" #When a new Item is created the page wont reload thanks to AJAX
 		end
+
+		 respond_to do |format|
+     		 format.html
+      	 	 format.js
+    	 end
+	end
+
+	def show
 	end
 
 	def update

@@ -1,4 +1,13 @@
 <h1>Add new item to your todoo list</h1>
-<%= render 'form' %>
+<%= form_for @todo, htm: { class: 'form-horizontal' }, remote: true do |f| %>
+	<%= f.label :name %>: <%= f.text_field :name %>
+	<%= f.hidden_field :done, :value => false %>
+	
+	<div class="control-group">
+      <div class="controls">
+        <%= f.submit "Add", class: 'btn' %>
+      </div>
+    </div>
+<% end %>
 
 <%= link_to 'Back', todoo_index_path %>
