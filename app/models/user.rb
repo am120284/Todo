@@ -7,19 +7,6 @@ class User < ActiveRecord::Base
          has_many :todoos
 
 
-         def admin?
-            role == 'admin'
-         end
-
-         def moderator?
-            role == 'moderator'
-         end
-
-         def confirm!
-         	welcome_email
-         	super
-         end
-
          private
 
          def welcome_email
