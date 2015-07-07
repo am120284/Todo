@@ -17,10 +17,9 @@ class TodoosController < ApplicationController
 		if @todo.save
 			redirect_to todoos_path, :notice => "Your todo item was created!"
 		else
-			render "new" #When a new Item is created the page wont reload thanks to AJAX
+			render "new" #Decided no to use Ajax running out of time
 		end
 	end
-
 
 
 	def update
